@@ -1,0 +1,11 @@
+{
+  "name": "@arch-refactor/engine-linux-x64-gnu",
+  "version": "0.1.0",
+  "description": "Linux x64 (glibc) prebuilt native binary for @arch-refactor/engine",
+  "os": ["linux"],
+  "cpu": ["x64"],
+  "libc": ["glibc"],
+  "main": "arch_refactor_engine.linux-x64-gnu.node",
+  "files": ["arch_refactor_engine.linux-x64-gnu.node"],
+  "license": "MIT"
+}

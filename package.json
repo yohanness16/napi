@@ -1,0 +1,60 @@
+{
+  "name": "@arch-refactor/engine",
+  "version": "0.1.0",
+  "description": "Automated repository-wide architectural refactoring engine with Rust, Oxc, and NAPI-RS",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "bin": {
+    "arch-refactor": "./bin/cli.js"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "npm",
+    "index.d.ts",
+    "index.js",
+    "arch_refactor_engine.node",
+    "README.md"
+  ],
+  "napi": {
+    "binaryName": "arch_refactor_engine",
+    "targets": [
+      "x86_64-unknown-linux-gnu",
+      "x86_64-unknown-linux-musl",
+      "aarch64-unknown-linux-gnu",
+      "aarch64-apple-darwin",
+      "x86_64-apple-darwin",
+      "x86_64-pc-windows-msvc"
+    ]
+  },
+  "scripts": {
+    "build:native": "napi build --platform --release",
+    "build:native:debug": "napi build --platform",
+    "build:ts": "tsc",
+    "build": "napi build --platform --release && npm run build:ts",
+    "test": "npm run build:native:debug && npm run build:ts && npm run test:ts",
+    "test:ts": "node --test test/**/*.test.js test/**/*.test.mjs"
+  },
+  "keywords": [
+    "refactoring",
+    "ast",
+    "oxc",
+    "napi-rs",
+    "rust",
+    "architecture",
+    "typescript",
+    "clean-code",
+    "ddd",
+    "modular"
+  ],
+  "author": "Arch Refactor Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@napi-rs/cli": "^3.0.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">= 18.0.0"
+  }
+}

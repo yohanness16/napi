@@ -1,0 +1,11 @@
+{
+  "name": "@arch-refactor/engine-linux-x64-musl",
+  "version": "0.1.0",
+  "description": "Linux x64 (musl) prebuilt native binary for @arch-refactor/engine",
+  "os": ["linux"],
+  "cpu": ["x64"],
+  "libc": ["musl"],
+  "main": "arch_refactor_engine.linux-x64-musl.node",
+  "files": ["arch_refactor_engine.linux-x64-musl.node"],
+  "license": "MIT"
+}

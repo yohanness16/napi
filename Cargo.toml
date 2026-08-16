@@ -1,0 +1,53 @@
+[package]
+name = "arch_refactor_engine"
+version = "0.1.0"
+edition = "2021"
+authors = ["Arch Refactor Team"]
+description = "Automated repository-wide architectural refactoring engine with Rust, Oxc, and NAPI-RS"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# NAPI-RS bindings
+napi = { version = "2.16", default-features = false, features = ["napi4", "serde-json"] }
+napi-derive = "2.16"
+
+# High-performance AST Parser & Spans
+oxc_allocator = "0.48"
+oxc_parser = "0.48"
+oxc_span = "0.48"
+oxc_ast = "0.48"
+
+# Concurrency & Parallelism
+rayon = "1.10"
+
+# Diff generation
+similar = { version = "2.6", features = ["inline"] }
+
+# Hashing & Deduplication
+siphasher = "1.0"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Filesystem & Path utilities
+walkdir = "2.5"
+pathdiff = "0.2"
+regex = "1.10"
+chrono = { version = "0.4", features = ["serde"] }
+
+[build-dependencies]
+napi-build = "2.1"
+
+[dev-dependencies]
+tempfile = "3.10"
+
+
+[profile.release]
+lto = true
+opt-level = 3
+codegen-units = 1
+strip = "symbols"

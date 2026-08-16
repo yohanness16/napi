@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+target/
+
+# Build artifacts
+*.node
+*.d.ts.map
+*.js.map
+dist/
+build/
+.next/
+.remix/
+.turbo/
+.cache/
+coverage/
+
+# Transaction Journals
+.refactor-journal.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment & Logs
+*.log
+.env
+.env.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

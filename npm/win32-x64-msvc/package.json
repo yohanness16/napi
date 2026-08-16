@@ -1,0 +1,10 @@
+{
+  "name": "@arch-refactor/engine-win32-x64-msvc",
+  "version": "0.1.0",
+  "description": "Windows x64 prebuilt native binary for @arch-refactor/engine",
+  "os": ["win32"],
+  "cpu": ["x64"],
+  "main": "arch_refactor_engine.win32-x64-msvc.node",
+  "files": ["arch_refactor_engine.win32-x64-msvc.node"],
+  "license": "MIT"
+}

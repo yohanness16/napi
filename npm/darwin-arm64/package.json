@@ -1,0 +1,10 @@
+{
+  "name": "@arch-refactor/engine-darwin-arm64",
+  "version": "0.1.0",
+  "description": "macOS Apple Silicon (arm64) prebuilt native binary for @arch-refactor/engine",
+  "os": ["darwin"],
+  "cpu": ["arm64"],
+  "main": "arch_refactor_engine.darwin-arm64.node",
+  "files": ["arch_refactor_engine.darwin-arm64.node"],
+  "license": "MIT"
+}
