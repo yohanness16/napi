@@ -7,6 +7,7 @@ Automated, repository-wide architectural refactoring engine implemented in Rust,
 ## Table of Contents
 
 - [Overview](#overview)
+- [Quick Start Guide](#quick-start-guide)
 - [Key Capabilities](#key-capabilities)
   - [1. Framework Boundary Protection](#1-framework-boundary-protection)
   - [2. AST Dependency Graph and Cycle Detection](#2-ast-dependency-graph-and-cycle-detection)
@@ -14,9 +15,10 @@ Automated, repository-wide architectural refactoring engine implemented in Rust,
   - [4. AST Code Clone and Redundancy Detection](#4-ast-code-clone-and-redundancy-detection)
   - [5. Atomic Transactions and Lossless Rollback](#5-atomic-transactions-and-lossless-rollback)
 - [Installation and Execution](#installation-and-execution)
-  - [Using via NPX (No Installation)](#using-via-npx-no-installation)
+  - [Using via NPX (Recommended - Zero Installation)](#using-via-npx-recommended---zero-installation)
   - [Global Installation](#global-installation)
   - [Local Project Dependency](#local-project-dependency)
+- [Step-by-Step Refactoring Workflow](#step-by-step-refactoring-workflow)
 - [Command Line Interface (CLI) Reference](#command-line-interface-cli-reference)
   - [1. Scan Architecture (`scan`)](#1-scan-architecture-scan)
   - [2. Detect Duplicate Code (`detect-clones`)](#2-detect-duplicate-code-detect-clones)
@@ -45,6 +47,32 @@ Arch Refactor Engine executes these operations natively using an AST engine buil
 
 ---
 
+## Quick Start Guide
+
+Run directly on any JavaScript/TypeScript repository without installing:
+
+```bash
+# 1. Scan your project architecture and dependencies
+npx -y arch-refactor-engine@latest scan .
+
+# 2. Detect duplicate utility logic and code clones
+npx -y arch-refactor-engine@latest detect-clones . --min-lines=3
+
+# 3. Generate a feature-based migration plan
+npx -y arch-refactor-engine@latest plan . -a feature-based -n kebab-case
+
+# 4. Preview exact byte-level import diffs
+npx -y arch-refactor-engine@latest diff .
+
+# 5. Apply changes with automatic backup journal
+npx -y arch-refactor-engine@latest apply . --yes
+
+# 6. Revert at any time if needed
+npx -y arch-refactor-engine@latest undo .
+```
+
+---
+
 ## Key Capabilities
 
 ### 1. Framework Boundary Protection
@@ -66,11 +94,11 @@ Before applying changes, the engine inspects Git cleanliness and creates a full 
 
 ## Installation and Execution
 
-### Using via NPX (No Installation)
-Execute the CLI directly on any target directory without global installation:
+### Using via NPX (Recommended - Zero Installation)
+Execute the CLI directly on any target directory without installation:
 
 ```bash
-npx arch-refactor-engine scan /path/to/project
+npx -y arch-refactor-engine@latest scan /path/to/project
 ```
 
 ### Global Installation
@@ -91,6 +119,47 @@ Install as a devDependency in existing projects:
 
 ```bash
 npm install --save-dev arch-refactor-engine
+```
+
+---
+
+## Step-by-Step Refactoring Workflow
+
+### Stage 1: Assessment and Inspection
+Examine framework conventions, path aliases, coupling metrics, and duplicate logic:
+
+```bash
+npx -y arch-refactor-engine@latest scan .
+npx -y arch-refactor-engine@latest detect-clones . --min-lines=3
+```
+
+### Stage 2: Planning and Diff Preview
+Generate the target architecture layout and review the planned AST import modifications:
+
+```bash
+npx -y arch-refactor-engine@latest plan . -a feature-based -n kebab-case
+npx -y arch-refactor-engine@latest diff . -a feature-based -n kebab-case
+```
+
+### Stage 3: Dry-Run Verification
+Simulate the transaction without modifying any files on disk:
+
+```bash
+npx -y arch-refactor-engine@latest apply . -a feature-based -n kebab-case --dry-run
+```
+
+### Stage 4: Atomic Execution
+Apply the transformation:
+
+```bash
+npx -y arch-refactor-engine@latest apply . -a feature-based -n kebab-case --yes
+```
+
+### Stage 5: Rollback (Optional)
+If you wish to revert the entire codebase back to its previous state:
+
+```bash
+npx -y arch-refactor-engine@latest undo .
 ```
 
 ---
