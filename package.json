@@ -35,7 +35,7 @@
     "build:ts": "tsc",
     "build": "napi build --platform --release && npm run build:ts",
     "test": "npm run build:native:debug && npm run build:ts && npm run test:ts",
-    "test:ts": "node --test test/*.test.js"
+    "test:ts": "node --test"
   },
   "keywords": [
     "refactoring",
