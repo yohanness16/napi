@@ -137,8 +137,8 @@ impl CloneDetector {
         let ret = Parser::new(&allocator, &content, source_type).parse();
 
         let relative_path = pathdiff::diff_paths(file_path, root_path)
-            .map(|p| p.to_string_lossy().to_string())
-            .unwrap_or_else(|| file_path.to_string_lossy().to_string());
+            .map(|p| p.to_string_lossy().replace('\\', "/"))
+            .unwrap_or_else(|| file_path.to_string_lossy().replace('\\', "/"));
 
         let line_starts = Self::compute_line_starts(&content);
         let mut instances = Vec::new();

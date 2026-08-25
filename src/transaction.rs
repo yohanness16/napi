@@ -145,7 +145,7 @@ impl TransactionEngine {
             let new_path = move_map.get(&file_path).cloned();
 
             let rel_path = pathdiff::diff_paths(p, root)
-                .map(|r| r.to_string_lossy().to_string())
+                .map(|r| r.to_string_lossy().replace('\\', "/"))
                 .unwrap_or_else(|| file_path.clone());
 
             let diff = BytePatcher::generate_unified_diff(

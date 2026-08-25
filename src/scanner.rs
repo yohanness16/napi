@@ -388,8 +388,8 @@ impl Scanner {
             .par_iter()
             .filter_map(|path| {
                 let relative = match pathdiff::diff_paths(path, &canonical_root) {
-                    Some(r) => r.to_string_lossy().to_string(),
-                    None => path.to_string_lossy().to_string(),
+                    Some(r) => r.to_string_lossy().replace('\\', "/"),
+                    None => path.to_string_lossy().replace('\\', "/"),
                 };
 
                 let content = match fs::read_to_string(path) {
