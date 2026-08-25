@@ -266,8 +266,13 @@ impl TransactionEngine {
             created_files.push(target_path_str.clone());
 
             // If file was moved, remove original file if it is distinct
-            if move_map.contains_key(file_path) && file_path != target_path_str {
-                let _ = fs::remove_file(Path::new(file_path));
+            if move_map.contains_key(file_path) {
+                let orig_p = Path::new(file_path);
+                let orig_norm = orig_p.canonicalize().unwrap_or_else(|_| orig_p.to_path_buf());
+                let target_norm = target_path.canonicalize().unwrap_or_else(|_| target_path.to_path_buf());
+                if orig_norm != target_norm && orig_p.exists() {
+                    let _ = fs::remove_file(orig_p);
+                }
             }
         }
 
