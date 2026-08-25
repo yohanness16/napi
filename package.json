@@ -1,11 +1,12 @@
 {
-  "name": " arch-refactor-engine",
-  "version": "0.1.0",
+  "name": "arch-refactor-engine",
+  "version": "0.1.1",
   "description": "Automated repository-wide architectural refactoring engine with Rust, Oxc, and NAPI-RS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
-    "arch-refactor": "./bin/cli.js"
+    "arch-refactor": "./bin/cli.js",
+    "arch-refactor-engine": "./bin/cli.js"
   },
   "files": [
     "lib",
@@ -14,6 +15,7 @@
     "index.d.ts",
     "index.js",
     "arch_refactor_engine.node",
+    "*.node",
     "README.md"
   ],
   "napi": {

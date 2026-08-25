@@ -1,0 +1,16 @@
+# Ignore source and build caches
+node_modules/
+target/
+src/
+.github/
+test/
+*.log
+.DS_Store
+.refactor-journal.json
+Cargo.lock
+Cargo.toml
+build.rs
+md.md
+
+# DO NOT ignore native addon binaries
+!*.node
